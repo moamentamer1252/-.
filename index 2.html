@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> الأدوات </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Reem Kufi', sans-serif;
+            background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+            color: #f8f9fa;
+            direction: rtl;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar {
+            background: rgba(13, 27, 42, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-item {
+            color: #ffcc66;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            border-radius: 15px;
+            background: rgba(255, 204, 102, 0.2);
+            border-color: #ffcc66;
+            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        .container {
+            margin-top: 50px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(27, 38, 59, 0.8);
+            padding: 20px;
+        }
+
+        .boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 768px;
+        }
+
+        .box {
+            background: linear-gradient(145deg, #2c3e50, #1b263b);
+            color: #ffcc66;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), 
+                        -5px -5px 15px rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 204, 102, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: right;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .box img.icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .box:hover {
+            transition: 0.5s ease;
+            background: rgba(44, 62, 80, 0.9);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 204, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .box img.icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">السور</a>
+            <a href="index 2.html" class="nav-item">الأدوات</a>
+            <a href="#" class="nav-item">أوقات الصلاة</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="boxes">
+            <a href="دُعَاءِ خَتْمِ القُرْآنِ.html" class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/84/84660.png" alt="دُعَاءِ خَتْمِ القُرْآنِ." class="icon">
+                <span>دُعَاءِ خَتْمِ القُرْآنِ.</span>
+            </a>
+            <a href="سبحه .html" class="box">
+                <img src="https://png.pngtree.com/png-vector/20230317/ourmid/pngtree-dhikir-tasbeeh-prayer-beads-in-brown-color-vector-png-image_6653814.png" alt="سُبْحَةٌ" class="icon">
+                <span>سُبْحَةٌ</span>
+            </a>
+            <a href="ad3yah.html" class="box">
+                <img src="female-hands-with-rosary-isolated-white_392895-378065-removebg-preview.png" alt="أَدْعِيَةٌ" class="icon">
+                <span>أَدْعِيَةٌ</span>
+            </a>
+            <a href="غذاء الروح.html" class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/650/650572.png" alt="غِذَاءُ الرُّوحِ" class="icon">
+                <span>غِذَاءُ الرُّوحِ</span>
+            </a>
+            <a href="Ramden.html" class="box">
+                <img src="https://static.thenounproject.com/png/2669475-200.png" alt="المربع الخامس" class="icon">
+                <span>شَهْرُ , رَمَضَانَ</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
