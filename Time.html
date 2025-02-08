@@ -3,182 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أوقات الصلاة - ساعة دائرية</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap">
-    <script src="https://cdn.jsdelivr.net/npm/moment/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment-hijri/moment-hijri.js"></script>
+    <title>مواقيت الصلاة</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+
         body {
             font-family: 'Reem Kufi', sans-serif;
             background: linear-gradient(to bottom, #0d1b2a, #1b263b);
             color: #f8f9fa;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
-        .date-display {
-            font-size: 22px;
-            margin-bottom: 15px;
-            font-weight: bold;
+        .navbar {
+            background: rgba(13, 27, 42, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-item {
             color: #ffcc66;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+            background: transparent;
+            border: 1px solid transparent;
         }
-        .clock-container {
-            position: relative;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, #1b263b, #0d1b2a);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 204, 102, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            border-radius: 15px;
+            background: rgba(255, 204, 102, 0.2);
+            border-color: #ffcc66;
+            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px; /* يمكنك تعديل هذا حسب الحاجة */
+            padding: 20px;
+            background: rgba(27, 38, 59, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            margin: 80px auto 20px; /* تعديل الهامش ليتناسب مع الشريط العلوي */
+        }
+
+        h1 {
+            color: #ffcc66;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* الساعة الدائرية */
+        .clock {
+            width: 200px;
+            height: 200px;
             border: 5px solid #ffcc66;
+            border-radius: 50%;
+            position: relative;
+            margin: 20px auto;
+            background: #1b263b;
+            box-shadow: 0 0 15px rgba(255, 204, 102, 0.6);
         }
+
         .hand {
             position: absolute;
-            width: 50%;
-            height: 4px;
             background: #ffcc66;
-            top: 50%;
+            transform-origin: 50% 100%;
+            border-radius: 5px;
             left: 50%;
-            transform-origin: left;
-            transform: rotate(90deg);
-            transition: all 0.05s linear;
-            border-radius: 2px;
+            bottom: 50%;
+            transform: translateX(-50%) rotate(0deg);
         }
-        .hand.hour { width: 30%; height: 6px; }
-        .hand.minute { width: 45%; height: 4px; background: #f8f9fa; }
-        .hand.second { width: 50%; height: 2px; background: red; }
-        .center-dot {
-            position: absolute;
+
+        .hour-hand {
+            width: 6px;
+            height: 50px;
+        }
+
+        .minute-hand {
+            width: 4px;
+            height: 70px;
+        }
+
+        .second-hand {
+            width: 2px;
+            height: 80px;
+            background: red;
+        }
+
+        .center-circle {
             width: 12px;
             height: 12px;
             background: #ffcc66;
             border-radius: 50%;
-            z-index: 10;
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%, 50%);
         }
+
+        /* الصلاة القادمة */
         .next-prayer {
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 20px;
             color: #ffcc66;
-            text-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
+            margin-top: 10px;
         }
-        .prayer-times {
-            margin-top: 15px;
-            font-size: 18px;
-            background: rgba(27, 38, 59, 0.8);
-            padding: 15px;
+
+        /* إطار مواقيت الصلاة */
+        .prayer-times iframe {
+            width: 100%;
+            height: 250px;
             border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 400px;
+            margin-top: 20px;
         }
-        .prayer-times ul {
-            list-style: none;
-            padding: 0;
-        }
-        .prayer-times li {
-            padding: 8px 0;
-            font-weight: bold;
-            color: #ffcc66;
-        }
+
+        /* التصميم على الموبايل */
         @media (max-width: 768px) {
-            .clock-container { width: 200px; height: 200px; }
-            .hand.hour { width: 25%; }
-            .hand.minute { width: 40%; }
-            .hand.second { width: 45%; }
-            .next-prayer { font-size: 18px; }
-            .prayer-times { font-size: 16px; }
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .clock {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hour-hand { height: 45px; }
+            .minute-hand { height: 60px; }
+            .second-hand { height: 75px; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Time.html" class="nav-item">أوقات الصلاة</a>
+            <a href="index 2.html" class="nav-item">الأدوات</a>
+            <a href="index.html" class="nav-item">السور</a>
+           
+        </div>
+    </nav>
+    <div class="container">
+        <h1>مواقيت الصلاة</h1>
+        
+        <!-- الساعة الدائرية -->
+        <div class="clock">
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="center-circle"></div>
+        </div>
 
-    <div class="date-display" id="date-display"></div>
+        <!-- الصلاة القادمة -->
+        <div class="next-prayer">الصلاة القادمة: جاري التحديث...</div>
 
-    <div class="clock-container">
-        <div class="hand hour" id="hour-hand"></div>
-        <div class="hand minute" id="minute-hand"></div>
-        <div class="hand second" id="second-hand"></div>
-        <div class="center-dot"></div>
-    </div>
-
-    <div class="next-prayer" id="next-prayer">الصلاة القادمة: الفجر - 04:00 ص</div>
-
-    <div class="prayer-times">
-        <ul id="prayer-list"></ul>
+        <!-- مواقيت الصلاة -->
+        <div class="prayer-times">
+            <iframe src="https://www.islamicfinder.org/prayer-widget/360630/shafi/2/0/19.5/17.5" frameborder="0"></iframe>
+        </div>
     </div>
 
     <script>
         function updateClock() {
             const now = new Date();
-            let hours = now.getHours();
-            hours = hours === 0 ? 12 : hours % 12;
-            let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
 
-            let hourDeg = (360 / 12) * hours + (30 * minutes) / 60;
-            let minuteDeg = (360 / 60) * minutes;
-            let secondDeg = (360 / 60) * seconds;
+            const hourDeg = (hours * 30) + (0.5 * minutes);
+            const minuteDeg = (minutes * 6);
+            const secondDeg = (seconds * 6);
 
-            document.getElementById("hour-hand").style.transform = rotate(${hourDeg}deg);
-            document.getElementById("minute-hand").style.transform = rotate(${minuteDeg}deg);
-            document.getElementById("second-hand").style.transform = rotate(${secondDeg}deg);
+            document.querySelector(".hour-hand").style.transform = translateX(-50%) rotate(${hourDeg}deg);
+            document.querySelector(".minute-hand").style.transform = translateX(-50%) rotate(${minuteDeg}deg);
+            document.querySelector(".second-hand").style.transform = translateX(-50%) rotate(${secondDeg}deg);
         }
 
         setInterval(updateClock, 1000);
         updateClock();
 
-        function getHijriDate() {
-            return moment().format('iYYYY/iMM/iDD هـ');
-        }
+        async function fetchPrayerTimes() {
+            const response = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=EG&method=2");
+            const data = await response.json();
+            const timings = data.data.timings;
 
-        document.getElementById("date-display").innerText = ${getHijriDate()};
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
 
-        let prayerTimes = [
-            { name: "الفجر", time: "04:00 ص" },
-            { name: "الظهر", time: "12:00 م" },
-            { name: "العصر", time: "03:13 م" },
-            { name: "المغرب", time: "05:37 م" },
-            { name: "العشاء", time: "07:00 م" }
-        ];
+            const prayers = [
+                { name: "الفجر", time: timings.Fajr },
+                { name: "الظهر", time: timings.Dhuhr },
+                { name: "العصر", time: timings.Asr },
+                { name: "المغرب", time: timings.Maghrib },
+                { name: "العشاء", time: timings.Isha }
+            ];
 
-        function updatePrayerTimes() {
-            let list = document.getElementById("prayer-list");
-            list.innerHTML = "";
-            prayerTimes.forEach(prayer => {
-                let li = document.createElement("li");
-                li.innerText = ${prayer.name} - ${prayer.time};
-                list.appendChild(li);
-            });
+            let nextPrayer = "غير معروفة";
+            for (let i = 0; i < prayers.length; i++) {
+                const [h, m] = prayers[i].time.split(":").map(Number);
+                const prayerTime = h * 60 + m;
 
-            let now = new Date();
-            let nextPrayer = prayerTimes.find(prayer => {
-                let [hour, minute] = prayer.time.split(/[: ]/).map(Number);
-                let period = prayer.time.includes("م") ? "PM" : "AM";
-                if (period === "PM" && hour !== 12) hour += 12;
-                if (period === "AM" && hour === 12) hour = 0;
-                let prayerTime = new Date();
-                prayerTime.setHours(hour, minute, 0, 0);
-                return prayerTime > now;
-            });
-
-            if (nextPrayer) {
-                document.getElementById("next-prayer").innerText = الصلاة القادمة:${nextPrayer.name} - ${nextPrayer.time};
-            } else {
-                document.getElementById("next-prayer").innerText = "الصلاة القادمة: الفجر - 04:00 ص";
+                if (prayerTime > currentTime) {
+                    nextPrayer = prayers[i].name;
+                    break;
+                }
             }
+
+            document.querySelector(".next-prayer").textContent = الصلاة القادمة: ${nextPrayer};
         }
 
-        updatePrayerTimes();
+        fetchPrayerTimes();
+        setInterval(fetchPrayerTimes, 60000);
     </script>
 
 </body>

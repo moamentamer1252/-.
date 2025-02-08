@@ -4,7 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>القرآن الكريم</title>
-    <link rel="stylesheet" href="index.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+        body {
+            font-family: 'Reem Kufi', sans-serif;
+            background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+            color: #f8f9fa;
+            direction: rtl;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: rgba(13, 27, 42, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-item {
+            color: #ffcc66;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            border-radius: 15px;
+            background: rgba(255, 204, 102, 0.2);
+            border-color: #ffcc66;
+            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 20px;
+            background: rgba(27, 38, 59, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ffcc66;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
+        }
+
+        .decorative-line {
+            transform: translateY(-15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .decorative-line .line {
+            height: 1px;
+            background: #ffcc66;
+            border-radius: 3px;
+        }
+
+        .decorative-line .short {
+            width: 30px;
+        }
+
+        .decorative-line .long {
+            width: 80px;
+        }
+
+        .decorative-line .medium {
+            width: 50px;
+        }
+
+        .suras {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            justify-items: center;
+            padding: 25px;
+        }
+
+        .sura {
+            background: linear-gradient(145deg, #2c3e50, #1b263b);
+            color: #ffcc66;
+            padding: 18px 20px;
+            border-radius: 15px 0px 15px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            max-width: 180px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4),
+                -5px -5px 15px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            border: 2px solid rgba(255, 204, 102, 0.4);
+        }
+
+        .sura::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 2px solid rgba(255, 204, 102, 0.3);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .sura:hover {
+            background: rgba(44, 62, 80, 0.9);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 204, 102, 0.4);
+        }
+
+        .verses-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(27, 38, 59, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .verse {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 10px;
+            }
+
+            .nav-item {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .suras {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .sura {
+                font-size: 18px;
+                padding: 15px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -21,122 +196,69 @@
             <span class="line long"></span>
             <span class="line medium"></span>
         </div>
-        <div class="suras">
-            <div class="sura">الْفَاتِحَة</div>
-            <div class="sura">الْبَقَرَة</div>
-            <div class="sura">آلِ عِمْرَان</div>
-            <div class="sura">النِّسَاء</div>
-            <div class="sura">الْمَائِدَة</div>
-            <div class="sura">الْأَنْعَام</div>
-            <div class="sura">الْأَعْرَاف</div>
-            <div class="sura">الْأَنْفَال</div>
-            <div class="sura">التَّوْبَة</div>
-            <div class="sura">يُونُس</div>
-            <div class="sura">هُود</div>
-            <div class="sura">يُوسُف</div>
-            <div class="sura">الرَّعْد</div>
-            <div class="sura">إِبْرَاهِيم</div>
-            <div class="sura">الْحِجْر</div>
-            <div class="sura">النَّحْل</div>
-            <div class="sura">الْإِسْرَاء</div>
-            <div class="sura">الْكَهْف</div>
-            <div class="sura">مَرْيَم</div>
-            <div class="sura">طه</div>
-            <div class="sura">الْأَنْبِيَاء</div>
-            <div class="sura">الْحَجّ</div>
-            <div class="sura">الْمُؤْمِنُونَ</div>
-            <div class="sura">النُّور</div>
-            <div class="sura">الْفُرْقَان</div>
-            <div class="sura">الشُّعَرَاء</div>
-            <div class="sura">النَّمْل</div>
-            <div class="sura">الْقَصَص</div>
-            <div class="sura">الْعَنْكَبُوت</div>
-            <div class="sura">الرُّوم</div>
-            <div class="sura">لُقْمَان</div>
-            <div class="sura">السَّجْدَة</div>
-            <div class="sura">الْأَحْزَاب</div>
-            <div class="sura">سَبَأ</div>
-            <div class="sura">فَاطِر</div>
-            <div class="sura">يس</div>
-            <div class="sura">الصَّافَّات</div>
-            <div class="sura">ص</div>
-            <div class="sura">الزُّمَر</div>
-            <div class="sura">غَافِر</div>
-            <div class="sura">فُصِّلَتْ</div>
-            <div class="sura">الشُّورَى</div>
-            <div class="sura">الزُّخْرُف</div>
-            <div class="sura">الدُّخَان</div>
-            <div class="sura">الْجَاثِيَة</div>
-            <div class="sura">الْأَحْقَاف</div>
-            <div class="sura">مُحَمَّد</div>
-            <div class="sura">الْفَتْح</div>
-            <div class="sura">الْحُجُرَات</div>
-            <div class="sura">ق</div>
-            <div class="sura">الذَّارِيَات</div>
-            <div class="sura">الطُّور</div>
-            <div class="sura">النَّجْم</div>
-            <div class="sura">الْقَمَر</div>
-            <div class="sura">الرَّحْمَن</div>
-            <div class="sura">الْوَاقِعَة</div>
-            <div class="sura">الْحَدِيد</div>
-            <div class="sura">الْمُجَادِلَة</div>
-            <div class="sura">الْحَشْر</div>
-            <div class="sura">الْمُمْتَحِنَة</div>
-            <div class="sura">الصَّفّ</div>
-            <div class="sura">الْجُمُعَة</div>
-            <div class="sura">الْمُنَافِقُونَ</div>
-            <div class="sura">التَّغَابُن</div>
-            <div class="sura">الطَّلَاق</div>
-            <div class="sura">التَّحْرِيم</div>
-            <div class="sura">الْمُلْك</div>
-            <div class="sura">الْقَلَم</div>
-            <div class="sura">الْحَاقَّة</div>
-            <div class="sura">الْمَعَارِج</div>
-            <div class="sura">نُوح</div>
-            <div class="sura">الْجِنّ</div>
-            <div class="sura">الْمُزَّمِّل</div>
-            <div class="sura">الْمُدَّثِّر</div>
-            <div class="sura">الْقِيَامَة</div>
-            <div class="sura">الْإِنْسَان</div>
-            <div class="sura">الْمُرْسَلَات</div>
-            <div class="sura">النَّبَأ</div>
-            <div class="sura">النَّازِعَات</div>
-            <div class="sura">عَبَسَ</div>
-            <div class="sura">التَّكْوِير</div>
-            <div class="sura">الْإِنْفِطَار</div>
-            <div class="sura">الْمُطَفِّفِينَ</div>
-            <div class="sura">الْإِنْشِقَاق</div>
-            <div class="sura">الْبُرُوج</div>
-            <div class="sura">الطَّارِق</div>
-            <div class="sura">الْأَعْلَى</div>
-            <div class="sura">الْغَاشِيَة</div>
-            <div class="sura">الْفَجْر</div>
-            <div class="sura">الْبَلَد</div>
-            <div class="sura">الشَّمْس</div>
-            <div class="sura">اللَّيْل</div>
-            <div class="sura">الضُّحَى</div>
-            <div class="sura">الشَّرْح</div>
-            <div class="sura">التِّين</div>
-            <div class="sura">الْعَلَق</div>
-            <div class="sura">الْقَدْر</div>
-            <div class="sura">الْبَيِّنَة</div>
-            <div class="sura">الزَّلْزَلَة</div>
-            <div class="sura">الْعَادِيَات</div>
-            <div class="sura">الْقَارِعَة</div>
-            <div class="sura">التَّكَاثُر</div>
-            <div class="sura">الْعَصْر</div>
-            <div class="sura">الْهُمَزَة</div>
-            <div class="sura">الْفِيل</div>
-            <div class="sura">قُرَيْش</div>
-            <div class="sura">الْمَاعُون</div>
-            <div class="sura">الْكَوْثَر</div>
-            <div class="sura">الْكَافِرُونَ</div>
-            <div class="sura">النَّصْر</div>
-            <div class="sura">الْمَسَد</div>
-            <div class="sura">الْإِخْلَاص</div>
-            <div class="sura">الْفَلَق</div>
-            <div class="sura">النَّاس</div>
+        <div class="suras" id="suras-container">
+            <!-- سيتم إضافة أسماء السور هنا عبر JavaScript -->
+        </div>
+        <div id="verses-container" class="verses-container">
+            <!-- سيتم عرض الآيات هنا -->
         </div>
     </div>
+    <script>
+        // قائمة أسماء السور
+        const surahs = [
+            "الْفَاتِحَة", "الْبَقَرَة", "آلِ عِمْرَان", "النِّسَاء", "الْمَائِدَة", "الْأَنْعَام", "الْأَعْرَاف", "الْأَنْفَال", "التَّوْبَة", "يُونُس",
+            "هُود", "يُوسُف", "الرَّعْد", "إِبْرَاهِيم", "الْحِجْر", "النَّحْل", "الْإِسْرَاء", "الْكَهْف", "مَرْيَم", "طه",
+            "الْأَنْبِيَاء", "الْحَجّ", "الْمُؤْمِنُونَ", "النُّور", "الْفُرْقَان", "الشُّعَرَاء", "النَّمْل", "الْقَصَص", "الْعَنْكَبُوت", "الرُّوم",
+            "لُقْمَان", "السَّجْدَة", "الْأَحْزَاب", "سَبَأ", "فَاطِر", "يس", "الصَّافَّات", "ص", "الزُّمَر", "غَافِر",
+            "فُصِّلَتْ", "الشُّورَى", "الزُّخْرُف", "الدُّخَان", "الْجَاثِيَة", "الْأَحْقَاف", "مُحَمَّد", "الْفَتْح", "الْحُجُرَات", "ق",
+            "الذَّارِيَات", "الطُّور", "النَّجْم", "الْقَمَر", "الرَّحْمَن", "الْوَاقِعَة", "الْحَدِيد", "الْمُجَادِلَة", "الْحَشْر", "الْمُمْتَحِنَة",
+            "الصَّفّ", "الْجُمُعَة", "الْمُنَافِقُونَ", "التَّغَابُن", "الطَّلَاق", "التَّحْرِيم", "الْمُلْك", "الْقَلَم", "الْحَاقَّة", "الْمَعَارِج",
+            "نُوح", "الْجِنّ", "الْمُزَّمِّل", "الْمُدَّثِّر", "الْقِيَامَة", "الْإِنْسَان", "الْمُرْسَلَات", "النَّبَأ", "النَّازِعَات", "عَبَسَ",
+            "التَّكْوِير", "الْإِنْفِطَار", "الْمُطَفِّفِينَ", "الْإِنْشِقَاق", "الْبُرُوج", "الطَّارِق", "الْأَعْلَى", "الْغَاشِيَة", "الْفَجْر", "الْبَلَد",
+            "الشَّمْس", "اللَّيْل", "الضُّحَى", "الشَّرْح", "التِّين", "الْعَلَق", "الْقَدْر", "الْبَيِّنَة", "الزَّلْزَلَة", "الْعَادِيَات",
+            "الْقَارِعَة", "التَّكَاثُر", "الْعَصْر", "الْهُمَزَة", "الْفِيل", "قُرَيْش", "الْمَاعُون", "الْكَوْثَر", "الْكَافِرُونَ", "النَّصْر",
+            "الْمَسَد", "الْإِخْلَاص", "الْفَلَق", "النَّاس"
+        ];
+
+        // عنصر الحاوية لعرض السور
+        const surasContainer = document.getElementById("suras-container");
+        const versesContainer = document.getElementById("verses-container");
+
+        // إضافة أسماء السور إلى الصفحة
+        surahs.forEach((surah, index) => {
+            const suraElement = document.createElement("div");
+            suraElement.classList.add("sura");
+            suraElement.textContent = surah;
+            suraElement.addEventListener("click", () => fetchVerses(index + 1));
+            surasContainer.appendChild(suraElement);
+        });
+
+        // دالة لجلب الآيات من API
+        async function fetchVerses(surahNumber) {
+            try {
+                const response = await fetch("");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+                const verses = data.data.ayahs;
+
+                // عرض الآيات
+                versesContainer.innerHTML = "";
+                verses.forEach(verse => {
+                    const verseElement = document.createElement("div");
+                    verseElement.classList.add("verse");
+                    verseElement.textContent = verse.text;
+                    versesContainer.appendChild(verseElement);
+                });
+
+                versesContainer.style.display = "block";
+            } catch (error) {
+                console.error("حدث خطأ أثناء جلب الآيات:", error);
+                versesContainer.innerHTML = "<div class='verse'>حدث خطأ أثناء جلب الآيات. يرجى المحاولة مرة أخرى.</div>";
+                versesContainer.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
