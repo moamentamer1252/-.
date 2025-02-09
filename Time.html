@@ -14,18 +14,17 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
 
         .container {
+            height: 530px;
             width: 100%;
-            max-width: 100%;
+            max-width: 800px;
             padding: 20px;
             background: rgba(27, 38, 59, 0.8);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             margin: 80px auto 20px;
-            box-sizing: border-box;
         }
 
         h1 {
@@ -99,7 +98,6 @@
             font-style: italic;
             line-height: 1.5;
         }
-
         .navbar {
             background: rgba(13, 27, 42, 0.95);
             padding: 15px 0;
@@ -137,57 +135,6 @@
             background: rgba(255, 204, 102, 0.2);
             border-color: #ffcc66;
             box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
-        }
-
-        /* استعلامات الوسائط (Media Queries) */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-                margin-top: 50px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .digital-clock {
-                font-size: 36px;
-            }
-
-            .prayer-table th, .prayer-table td {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .prayer-quote {
-                font-size: 14px;
-            }
-
-            .nav-container {
-                flex-direction: column;
-            }
-
-            .nav-item {
-                font-size: 16px;
-                padding: 10px 15px;
-                margin-bottom: 10px;
-            }
-        }
-
-        /* لجعل الصفحة تستفيد من المساحة بالكامل */
-        @media (max-width: 480px) {
-            body {
-                padding: 0;
-            }
-
-            .navbar {
-                position: relative;
-                margin-bottom: 60px;
-            }
-
-            .container {
-                padding: 10px;
-            }
         }
 
     </style>
