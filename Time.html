@@ -15,44 +15,6 @@
             margin: 0;
             padding: 0;
         }
-        .navbar {
-            background: rgba(13, 27, 42, 0.95);
-            padding: 15px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .nav-item {
-            color: #ffcc66;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 12px 18px;
-            border-radius: 10px;
-            transition: all 0.3s ease-in-out;
-            white-space: nowrap;
-            background: transparent;
-            border: 1px solid transparent;
-        }
-
-        .nav-item:hover {
-            transform: translateY(-3px);
-            border-radius: 15px;
-            background: rgba(255, 204, 102, 0.2);
-            border-color: #ffcc66;
-            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
-        }
 
         .container {
             width: 100%;
@@ -61,7 +23,7 @@
             background: rgba(27, 38, 59, 0.8);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            margin: 80px auto 20px; 
+            margin: 80px auto 20px;
         }
 
         h1 {
@@ -75,6 +37,12 @@
             color: #ffcc66;
             margin: 20px 0;
             text-shadow: 0 0 10px rgba(255, 204, 102, 0.6);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .prayer-table {
@@ -86,6 +54,7 @@
         .prayer-table th, .prayer-table td {
             padding: 12px;
             border-bottom: 1px solid rgba(255, 204, 102, 0.2);
+            transition: background-color 0.3s ease;
         }
 
         .prayer-table th {
@@ -98,40 +67,39 @@
             font-size: 16px;
         }
 
+        .prayer-table tr:hover {
+            background-color: rgba(255, 204, 102, 0.05);
+        }
+
         .next-prayer {
             background: rgba(255, 204, 102, 0.2);
             color: #ffcc66;
             font-weight: bold;
+            box-shadow: 0 0 15px rgba(255, 204, 102, 0.8);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 15px;
-            }
+        .next-prayer-upcoming {
+            background: rgba(255, 204, 102, 0.3);
+            color: #ffcc66;
+            font-weight: bold;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+        }
 
-            h1 {
-                font-size: 22px;
-            }
+        @keyframes glowing {
+            0% { box-shadow: 0 0 10px rgba(255, 204, 102, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(255, 204, 102, 1); }
+        }
 
-            .digital-clock {
-                font-size: 36px;
-            }
-
-            .prayer-table th, .prayer-table td {
-                padding: 10px;
-            }
+        .prayer-quote {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #ffcc66;
+            font-style: italic;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="Time.html" class="nav-item">أوقات الصلاة</a>
-            <a href="index 2.html" class="nav-item">الأدوات</a>
-            <a href="index.html" class="nav-item">السور</a>
-        </div>
-    </nav>
     <div class="container">
         <h1>مواقيت الصلاة</h1>
         <div class="digital-clock" id="digitalClock">00:00:00 AM</div>
@@ -150,6 +118,7 @@
                 <tr><td>العشاء</td><td>--:--</td></tr>
             </tbody>
         </table>
+        <div class="prayer-quote" id="prayerQuote">الحديث سيظهر هنا.</div>
     </div>
 
     <script>
@@ -160,7 +129,7 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const amPm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12 || 12;
-            document.getElementById('digitalClock').textContent = ${hours}:${minutes}:${seconds} ${amPm};
+            document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds} ${amPm}`;
         }
         setInterval(updateDigitalClock, 1000);
         updateDigitalClock();
@@ -169,43 +138,73 @@
             let [hours, minutes] = time.split(":").map(Number);
             const amPm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12 || 12;
-            return ${hours}:${String(minutes).padStart(2, '0')} ${amPm};
+            return `${hours}:${String(minutes).padStart(2, '0')} ${amPm}`;
+        }
+
+        function getPrayerQuote(prayerName) {
+            const quotes = {
+                "الفجر": "من صلى الفجر في جماعة فهو في ذمة الله.",
+                "الظهر": "من صلى صلاة الظهر كان له مثل أجر يومين.",
+                "العصر": "من صلى العصر في جماعة فقد أتم الصلاة.",
+                "المغرب": "من صلى المغرب في جماعة فكأنما صلى الليل كله.",
+                "العشاء": "من صلى العشاء في جماعة فكأنما قام نصف الليل."
+            };
+            return quotes[prayerName] || "حديث غير متوفر.";
         }
 
         async function fetchPrayerTimes() {
-            const response = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=EG&method=2");
-            const data = await response.json();
-            const timings = data.data.timings;
-            const prayers = [
-                { name: "الفجر", time: timings.Fajr },
-                { name: "الظهر", time: timings.Dhuhr },
-                { name: "العصر", time: timings.Asr },
-                { name: "المغرب", time: timings.Maghrib },
-                { name: "العشاء", time: timings.Isha }
-            ];
-            const tableBody = document.getElementById('prayerTimes');
-            tableBody.innerHTML = '';
-            prayers.forEach(prayer => {
-                const formattedTime = convertTo12HourFormat(prayer.time);
-                const row = document.createElement('tr');
-                row.innerHTML = <td>${prayer.name}</td><td>${formattedTime}</td>;
-                tableBody.appendChild(row);
-            });
+            try {
+                const response = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=EG&method=2");
+                if (!response.ok) throw new Error("فشل تحميل البيانات");
+                const data = await response.json();
+                const timings = data.data.timings;
 
-            const now = new Date();
-            const currentTime = now.getHours() * 60 + now.getMinutes();
-            for (let i = 0; i < prayers.length; i++) {
-                const [h, m] = prayers[i].time.split(":").map(Number);
-                const prayerTime = h * 60 + m;
-                if (prayerTime > currentTime) {
-                    tableBody.children[i].classList.add('next-prayer');
-                    break;
+                const prayers = [
+                    { name: "الفجر", time: timings.Fajr },
+                    { name: "الظهر", time: timings.Dhuhr },
+                    { name: "العصر", time: timings.Asr },
+                    { name: "المغرب", time: timings.Maghrib },
+                    { name: "العشاء", time: timings.Isha }
+                ];
+
+                const tableBody = document.getElementById('prayerTimes');
+                tableBody.innerHTML = '';
+
+                prayers.forEach(prayer => {
+                    const formattedTime = convertTo12HourFormat(prayer.time);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${prayer.name}</td><td>${formattedTime}</td>`;
+                    tableBody.appendChild(row);
+                });
+
+                const now = new Date();
+                const currentTime = now.getHours() * 60 + now.getMinutes();
+                let nextPrayerFound = false;
+
+                for (let i = 0; i < prayers.length; i++) {
+                    const [h, m] = prayers[i].time.split(":").map(Number);
+                    const prayerTime = h * 60 + m;
+                    const timeDiff = prayerTime - currentTime;
+
+                    if (timeDiff <= 10 && timeDiff > 0 && !nextPrayerFound) {
+                        tableBody.children[i].classList.add('next-prayer-upcoming');
+                        document.getElementById('prayerQuote').textContent = getPrayerQuote(prayers[i].name);
+                        nextPrayerFound = true;
+                    } else if (prayerTime > currentTime) {
+                        tableBody.children[i].classList.add('next-prayer');
+                        break;
+                    }
                 }
+            } catch (error) {
+                console.error("خطأ:", error);
+                document.getElementById('prayerTimes').innerHTML = '<tr><td colspan="2">حدث خطأ في تحميل البيانات</td></tr>';
             }
         }
 
-        fetchPrayerTimes();
-        setInterval(fetchPrayerTimes, 60000);
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchPrayerTimes();
+            setInterval(fetchPrayerTimes, 60000);
+        });
     </script>
 </body>
 </html>
