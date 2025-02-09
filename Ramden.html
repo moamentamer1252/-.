@@ -65,7 +65,52 @@
             position: relative;
             overflow: hidden;
         }
+        .fasting-table {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
 
+.fasting-category {
+    background: rgba(27, 38, 59, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    text-align: center;
+    border: 2px solid rgba(255, 204, 102, 0.5);
+}
+
+.fasting-category h2 {
+    font-family: 'Reem Kufi', sans-serif;
+    color: #ffcc66;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+}
+
+.fasting-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.fasting-category ul li {
+    background: linear-gradient(145deg, #2c3e50, #1b263b);
+    color: #ffcc66;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.fasting-category ul li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 204, 102, 0.5);
+}
         h1 {
             font-family: 'Reem Kufi', sans-serif;
             color: #ffcc66;
@@ -133,6 +178,7 @@
     <div class="container">
         <h1>رمضان كريم - 1446 هـ</h1>
         <p>شهر رمضان هو شهر الرحمة والمغفرة والعتق من النار، فلنغتنمه في العبادة والدعاء.</p>
+        <img style="transform: translateY(-28px);width: 300px;" src="https://png.pngtree.com/png-vector/20230226/ourmid/pngtree-green-ramadan-kareem-or-ramadhan-lantern-islamic-isra-miraj-al-nabi-png-image_6620980.png" alt="">
     </div>
 
     <div class="container">
@@ -172,6 +218,53 @@
         <p>استغل الأوقات المستقطعة في اليوم مثل بعد الفجر وقبل النوم.</p>
         <p>الاستماع للقرآن أثناء القيادة أو الأعمال اليومية يمكن أن يساعد في تدبره.</p>
     </div>
-
+    <div class="container">
+        <h1>المفطرات وغير المفطرات في رمضان</h1>
+        <div class="fasting-table">
+            <!-- قائمة الأشياء التي لا تفطر -->
+            <div class="fasting-category">
+                <h2>غير مفطرات</h2>
+                <ul>
+                    <li>بلع الريق</li>
+                    <li>الوضوء والمضمضة</li>
+                    <li>استخدام السواك أو معجون الأسنان</li>
+                    <li>قطرات العين والأذن</li>
+                    <li>الاستحمام والترطيب بالماء</li>
+                    <li>ستنشاق الروائح العطرية دون تعمد إدخالها للحلق.</li>
+                    <li>لاستحمام بالماء البارد أو الكمادات لتخفيف الحر أو الصداع.</li>
+                    <li>لحقن غير المغذية مثل حقن الأنسولين والمضادات الحيوية.</li>
+                    <li>أخذ الأكسجين النقي بدون إضافات غذائية.</li>
+                    <li>التبرع بالدم بكميات قليلة دون أن يؤدي إلى ضعف شديد.</li>
+                    <li> بلع الريق واللعاب حتى لو كان كثيرًا.
+                    </li>
+                    <li>التطعيم غير المغذي</li>
+                    <li>التبرع بالدم بكميات قليلة دون أن يؤدي إلى ضعف شديد.</li>
+                </ul>
+            </div>
+    
+            <!-- قائمة الأشياء التي تفطر -->
+            <div class="fasting-category">
+                <h2>المفطرات</h2>
+                <ul>
+                    <li>الأكل والشرب عمدًا</li>
+                    <li>التدخين</li>
+                    <li>القيء عمدًا</li>
+                    <li>الحيض والنفاس</li>
+                    <li>الحقن المغذية</li>
+                    <li>العلاقة الزوجية في نهار رمضان</li>
+                    <li>. الحقن المغذية مثل المغذيات الوريدية التي تعوض عن الطعام والشراب  </li>
+                    <li> ابتلاع بقايا الطعام العالقة في الفم عمدًا بعد دخول وقت الصيام.
+                    </li>
+                    <li>استعمال البخور واستنشاقه عمدًا مع إدخال الدخان إلى الحلق.</li>
+                    <li>لحجامة وسحب الدم بكميات كبيرة لأنها تضعف الجسم.</li>
+                    <li>. بلع النخامة (البلغم) عمدًا إذا وصلت إلى الفم ثم ابتُلعَت.
+                    </li>
+                    <li>. استخدام بخاخ الربو لأنه يحتوي على مواد سائلة تصل إلى المعدة.
+                    </li>
+                    <li>المبالغة في المضمضة والاستنشاق حتى يدخل الماء إلى الحلق.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
