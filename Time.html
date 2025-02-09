@@ -14,16 +14,18 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 100%;
             padding: 20px;
             background: rgba(27, 38, 59, 0.8);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             margin: 80px auto 20px;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -97,9 +99,107 @@
             font-style: italic;
             line-height: 1.5;
         }
+
+        .navbar {
+            background: rgba(13, 27, 42, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-item {
+            color: #ffcc66;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            border-radius: 15px;
+            background: rgba(255, 204, 102, 0.2);
+            border-color: #ffcc66;
+            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        /* استعلامات الوسائط (Media Queries) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin-top: 50px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .digital-clock {
+                font-size: 36px;
+            }
+
+            .prayer-table th, .prayer-table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .prayer-quote {
+                font-size: 14px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                font-size: 16px;
+                padding: 10px 15px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* لجعل الصفحة تستفيد من المساحة بالكامل */
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+            }
+
+            .navbar {
+                position: relative;
+                margin-bottom: 60px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">السور</a>
+            <a href="index 2.html" class="nav-item">الأدوات</a>
+            <a href="Time.html" class="nav-item">أوقات الصلاة</a>
+        </div>
+    </nav>
     <div class="container">
         <h1>مواقيت الصلاة</h1>
         <div class="digital-clock" id="digitalClock">00:00:00 AM</div>
