@@ -57,7 +57,7 @@
 
         .container {
             max-width: 1000px;
-            margin: 100px auto 20px;
+            margin: 80px auto 0px;
             background: rgba(27, 38, 59, 0.8);
             padding: 30px;
             border-radius: 15px;
@@ -204,61 +204,37 @@
         </div>
     </div>
     <script>
-        // قائمة أسماء السور
-        const surahs = [
-            "الْفَاتِحَة", "الْبَقَرَة", "آلِ عِمْرَان", "النِّسَاء", "الْمَائِدَة", "الْأَنْعَام", "الْأَعْرَاف", "الْأَنْفَال", "التَّوْبَة", "يُونُس",
-            "هُود", "يُوسُف", "الرَّعْد", "إِبْرَاهِيم", "الْحِجْر", "النَّحْل", "الْإِسْرَاء", "الْكَهْف", "مَرْيَم", "طه",
-            "الْأَنْبِيَاء", "الْحَجّ", "الْمُؤْمِنُونَ", "النُّور", "الْفُرْقَان", "الشُّعَرَاء", "النَّمْل", "الْقَصَص", "الْعَنْكَبُوت", "الرُّوم",
-            "لُقْمَان", "السَّجْدَة", "الْأَحْزَاب", "سَبَأ", "فَاطِر", "يس", "الصَّافَّات", "ص", "الزُّمَر", "غَافِر",
-            "فُصِّلَتْ", "الشُّورَى", "الزُّخْرُف", "الدُّخَان", "الْجَاثِيَة", "الْأَحْقَاف", "مُحَمَّد", "الْفَتْح", "الْحُجُرَات", "ق",
-            "الذَّارِيَات", "الطُّور", "النَّجْم", "الْقَمَر", "الرَّحْمَن", "الْوَاقِعَة", "الْحَدِيد", "الْمُجَادِلَة", "الْحَشْر", "الْمُمْتَحِنَة",
-            "الصَّفّ", "الْجُمُعَة", "الْمُنَافِقُونَ", "التَّغَابُن", "الطَّلَاق", "التَّحْرِيم", "الْمُلْك", "الْقَلَم", "الْحَاقَّة", "الْمَعَارِج",
-            "نُوح", "الْجِنّ", "الْمُزَّمِّل", "الْمُدَّثِّر", "الْقِيَامَة", "الْإِنْسَان", "الْمُرْسَلَات", "النَّبَأ", "النَّازِعَات", "عَبَسَ",
-            "التَّكْوِير", "الْإِنْفِطَار", "الْمُطَفِّفِينَ", "الْإِنْشِقَاق", "الْبُرُوج", "الطَّارِق", "الْأَعْلَى", "الْغَاشِيَة", "الْفَجْر", "الْبَلَد",
-            "الشَّمْس", "اللَّيْل", "الضُّحَى", "الشَّرْح", "التِّين", "الْعَلَق", "الْقَدْر", "الْبَيِّنَة", "الزَّلْزَلَة", "الْعَادِيَات",
-            "الْقَارِعَة", "التَّكَاثُر", "الْعَصْر", "الْهُمَزَة", "الْفِيل", "قُرَيْش", "الْمَاعُون", "الْكَوْثَر", "الْكَافِرُونَ", "النَّصْر",
-            "الْمَسَد", "الْإِخْلَاص", "الْفَلَق", "النَّاس"
-        ];
-
-        // عنصر الحاوية لعرض السور
-        const surasContainer = document.getElementById("suras-container");
-        const versesContainer = document.getElementById("verses-container");
-
-        // إضافة أسماء السور إلى الصفحة
-        surahs.forEach((surah, index) => {
-            const suraElement = document.createElement("div");
-            suraElement.classList.add("sura");
-            suraElement.textContent = surah;
-            suraElement.addEventListener("click", () => fetchVerses(index + 1));
-            surasContainer.appendChild(suraElement);
-        });
-
-        // دالة لجلب الآيات من API
-        async function fetchVerses(surahNumber) {
+        async function fetchSurahNames() {
             try {
-                const response = await fetch("");
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
+                const response = await fetch("https://api.alquran.cloud/v1/surah");
+                if (!response.ok) throw new Error("فشل تحميل البيانات");
                 const data = await response.json();
-                const verses = data.data.ayahs;
+                const surahs = data.data;
 
-                // عرض الآيات
-                versesContainer.innerHTML = "";
-                verses.forEach(verse => {
-                    const verseElement = document.createElement("div");
-                    verseElement.classList.add("verse");
-                    verseElement.textContent = verse.text;
-                    versesContainer.appendChild(verseElement);
+                const surasContainer = document.getElementById('suras-container');
+                surasContainer.innerHTML = ''; // تفريغ العنصر قبل إضافة السور
+
+                surahs.forEach((surah, index) => {
+                    const surahElement = document.createElement('div');
+                    surahElement.classList.add('sura'); // إضافة التنسيق المحدد مسبقاً
+
+                    const surahName = document.createElement('span');
+                    surahName.textContent = `${index + 1} - ${surah.name}`; // إضافة رقم السورة بجانب الاسم
+
+                    surahElement.appendChild(surahName);
+                    surahElement.onclick = () => {
+                        // الانتقال إلى صفحة الآيات الخاصة بالسورة
+                        window.location.href = `surah.html?number=${surah.number}`;
+                    };
+
+                    surasContainer.appendChild(surahElement);
                 });
-
-                versesContainer.style.display = "block";
             } catch (error) {
-                console.error("حدث خطأ أثناء جلب الآيات:", error);
-                versesContainer.innerHTML = "<div class='verse'>حدث خطأ أثناء جلب الآيات. يرجى المحاولة مرة أخرى.</div>";
-                versesContainer.style.display = "block";
+                console.error("خطأ:", error);
             }
         }
+
+        document.addEventListener("DOMContentLoaded", fetchSurahNames);
     </script>
 </body>
 </html>
