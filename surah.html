@@ -6,60 +6,94 @@
     <title>عرض السورة بالصفحات</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap');
 
         body {
-            color: antiquewhite;
+            color: white;
             direction: rtl;
             text-align: center;
-            font-family: 'Amiri Quran', serif;
+            font-family: 'Noto Naskh Arabic', serif;
             background: #000000;
             margin: 0;
             padding: 0;
         }
 
+        /* صندوق السورة مع إضاءة ذهبية متحركة */
         .quran-page {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
             background: #1b263b;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* توهج ذهبي */
             border-radius: 10px;
             position: relative;
+            animation: glow 10s infinite alternate;
         }
 
-        .sura-name {
-            font-size: 28px;
+        /* تأثير الإضاءة الذهبية */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        /* تصميم مربع اسم السورة */
+        .sura-container {
+            position: relative;
+            display: inline-block;
+            width: 210px;
+            height: 80px;
+            transform: translateX(-200px) translateY(-10px);
+            background: url('WhatsApp_Image_2025-02-10_at_1.22.08_PM-removebg-preview.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
             font-weight: bold;
-            margin-bottom: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
+        /* تحسين مظهر بسم الله */
         .bismillah {
             font-size: 24px;
             margin-bottom: 20px;
+            color: white;
         }
 
+        /* تنسيق الآيات */
         .ayah {
-            font-size: 22px;
+            font-size: 20px;
             line-height: 2;
-            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            font-weight: bold;
         }
 
+        /* تصميم أرقام الآيات */
+        .ayah-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffcc66cc;
+        }
+
+        /* رقم الصفحة */
         .page-number {
             font-size: 18px;
             margin-top: 30px;
             font-weight: bold;
+            color: white;
         }
 
-        .ayah-number {
-            font-size: 18px;
-            font-weight: bold;
-            color: #888;
-        }
-
-        .red-tashkeel {
-            color: red;
-        }
-
+        /* أزرار التنقل بين الصفحات */
         .pagination {
             margin-top: 20px;
         }
@@ -73,6 +107,12 @@
             color: white;
             border: none;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination button:hover {
+            background: #ffcc66;
+            color: black;
         }
 
         .pagination button:disabled {
@@ -95,19 +135,16 @@
         .close-btn:hover {
             color: #ff0000;
         }
-
     </style>
 </head>
 <body>
     <div class="quran-page">
-        <button class="close-btn" onclick="goHome()">×</button> <!-- زر الإغلاق -->
-        <h1 id="sura-name" class="sura-name">سورة البقرة</h1>
+        <button class="close-btn" onclick="goHome()">×</button>
+        <div class="sura-container" id="sura-name">سورة البقرة</div>
         <p class="bismillah">﷽</p>
-
         <div id="verses-container">
-            <!-- الآيات ستظهر هنا -->
+            <!-- سيتم تحميل الآيات هنا -->
         </div>
-
         <div class="page-number" id="page-number">الصفحة: 1</div>
 
         <div class="pagination">
@@ -120,35 +157,24 @@
         let currentPage = 1;
         let totalPages = 0;
         let versesData = [];
-
-        // تقسيم الآيات على الصفحات (مثال: 10 آيات لكل صفحة)
         const versesPerPage = 10;
 
         async function fetchVerses() {
             const urlParams = new URLSearchParams(window.location.search);
-            const surahNumber = urlParams.get('number') || 2; // افتراضيًا السورة 2
-            const surahNameMap = {
-                1: "الفاتحة",
-                2: "البقرة",
-                // أضف المزيد من السور حسب الحاجة
-            };
+            const surahNumber = urlParams.get('number') || 2;
 
             try {
-                // جلب بيانات السورة
                 const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}`);
                 if (!response.ok) throw new Error("فشل تحميل بيانات السورة");
 
                 const data = await response.json();
-                const surahName = data.data.name; // اسم السورة
-                versesData = data.data.ayahs; // الآيات
+                const surahName = data.data.name;
+                versesData = data.data.ayahs;
 
-                // تحديث اسم السورة
-                document.getElementById('sura-name').textContent = ` ${surahName}`;
+                document.getElementById('sura-name').textContent = surahName;
 
-                // تحديد عدد الصفحات بناءً على الآيات
                 totalPages = Math.ceil(versesData.length / versesPerPage);
-                displayPage(currentPage); // عرض الصفحة الحالية
-
+                displayPage(currentPage);
             } catch (error) {
                 console.error("خطأ:", error);
                 document.getElementById('verses-container').innerHTML = "<p>حدث خطأ أثناء تحميل السورة.</p>";
@@ -156,35 +182,24 @@
         }
 
         function displayPage(page) {
-            // تحديث رقم الصفحة
             document.getElementById('page-number').textContent = `الصفحة: ${page}`;
 
-            // تحديد الآيات التي ستكون في هذه الصفحة
             const startIndex = (page - 1) * versesPerPage;
             const endIndex = startIndex + versesPerPage;
             const versesToShow = versesData.slice(startIndex, endIndex);
 
-            // عرض الآيات
             const versesContainer = document.getElementById('verses-container');
-            versesContainer.innerHTML = ''; // مسح المحتوى القديم
+            versesContainer.innerHTML = '';
 
             versesToShow.forEach(verse => {
                 const verseElement = document.createElement('div');
                 verseElement.classList.add('ayah');
-                verseElement.innerHTML = highlightTashkeel(verse.text) + ` <span class="ayah-number">﴿${verse.numberInSurah}﴾</span>`;
+                verseElement.innerHTML = `${verse.text} <span class="ayah-number">﴿${verse.numberInSurah}﴾</span>`;
                 versesContainer.appendChild(verseElement);
             });
 
-            // تعطيل الأزرار إذا كانت الصفحات عند الأطراف
             document.getElementById('prev-btn').disabled = page === 1;
             document.getElementById('next-btn').disabled = page === totalPages;
-        }
-
-        function highlightTashkeel(text) {
-            // تلوين التشكيل باللون الأحمر
-            return text.replace(/[\u064B-\u0652]/g, (match) => {
-                return `<span class="red-tashkeel">${match}</span>`;
-            });
         }
 
         function navigatePage(direction) {
@@ -193,15 +208,13 @@
             } else if (direction === 'next' && currentPage < totalPages) {
                 currentPage++;
             }
-            displayPage(currentPage); // عرض الصفحة الجديدة
+            displayPage(currentPage);
         }
 
-        // دالة للعودة إلى الصفحة الرئيسية
         function goHome() {
-            window.location.href = "index.html"; // ضع هنا رابط الصفحة الرئيسية
+            window.location.href = "index.html";
         }
 
-        // تحميل الآيات عند تحميل الصفحة
         document.addEventListener("DOMContentLoaded", fetchVerses);
     </script>
 </body>
