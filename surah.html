@@ -4,56 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عرض السورة بالصفحات</title>
+    
+    <!-- استيراد الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap');
-
         body {
             color: white;
             direction: rtl;
             text-align: center;
-            font-family: 'Noto Naskh Arabic', serif;
+            font-family: 'Courier New', Courier, monospace;
             background: #000000;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* استخدام كامل ارتفاع الشاشة */
+            height: 100vh;
             overflow: hidden;
         }
-
-        /* صندوق السورة مع إضاءة ذهبية متحركة */
-        .quran-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            background: #1b263b;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* توهج ذهبي */
-            border-radius: 10px;
-            position: relative;
-            animation: glow 10s infinite alternate;
-            overflow-y: auto;
-        }
-
-        /* تأثير الإضاءة الذهبية */
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(255, 215, 0, 1);
-            }
-            100% {
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-            }
-        }
-
-        /* تصميم مربع اسم السورة */
         .sura-container {
             width: 80%;
             max-width: 300px;
@@ -71,40 +40,61 @@
             margin-bottom: 20px;
         }
 
-        /* تحسين مظهر بسم الله */
+        .quran-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 90%;
+            height: 95%;
+            padding: 20px;
+            background: #1b263b;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            border-radius: 10px;
+            position: relative;
+            animation: glow 10s infinite alternate;
+            overflow-y: auto;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+        }
+
+        /* تصميم مربع اسم السورة */
+       
+
         .bismillah {
             font-size: 28px;
             margin-bottom: 20px;
             color: white;
+            font-family: 'Amiri', serif;
         }
 
-        /* تنسيق الآيات */
         .ayah {
-            font-size: 18px;
-            line-height: 2;
-            font-family: 'Courier New', Courier, monospace;
-            color: white;
-            font-weight: bold;
-            margin-bottom: 10px;
-            word-wrap: break-word;
-        }
-
-        /* تصميم أرقام الآيات */
-        .ayah-number {
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffcc66cc;
-        }
-
-        /* رقم الصفحة */
-        .page-number {
             font-size: 22px;
-            margin-top: 20px;
+            line-height: 2;
+            font-family: 'Scheherazade New', serif;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 0 15px;
+        }
+
+        .ayah-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffcc66;
+        }
+
+        .page-number {
+            font-size: 20px;
+            margin-top: 15px;
             font-weight: bold;
             color: white;
         }
 
-        /* أزرار التنقل بين الصفحات */
         .pagination {
             margin-top: 20px;
         }
@@ -130,7 +120,6 @@
             background: #555;
         }
 
-        /* زر الإغلاق */
         .close-btn {
             position: absolute;
             top: 10px;
@@ -140,27 +129,23 @@
             background: transparent;
             border: none;
             cursor: pointer;
-            z-index: 100;
         }
 
         .close-btn:hover {
             color: #ff0000;
         }
 
-        /* Media Query للموبايل */
+        /* تحسين عرض الصفحة للموبايل */
         @media screen and (max-width: 768px) {
             .quran-page {
-                padding: 10px;
-                width: 90%;
-                height: 95%; /* لتغطية الشاشة بالكامل */
-                overflow-y: scroll; /* تمكين التمرير في حالة الحاجة */
-                overflow: hidden;
+                padding: 15px;
+                height: 90%;
+                overflow-y: scroll;
             }
 
             .sura-container {
-                width: 70%;
-                height: 120px;
-                font-size: 18px;
+                font-size: 20px;
+                height: 70px;
             }
 
             .bismillah {
@@ -168,11 +153,11 @@
             }
 
             .ayah {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .ayah-number {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .page-number {
@@ -191,9 +176,7 @@
         <button class="close-btn" onclick="goHome()">×</button>
         <div class="sura-container" id="sura-name">سورة البقرة</div>
         <p class="bismillah">﷽</p>
-        <div id="verses-container">
-            <!-- سيتم تحميل الآيات هنا -->
-        </div>
+        <div id="verses-container"></div>
         <div class="page-number" id="page-number">الصفحة: 1</div>
 
         <div class="pagination">
@@ -217,34 +200,24 @@
                 if (!response.ok) throw new Error("فشل تحميل بيانات السورة");
 
                 const data = await response.json();
-                const surahName = data.data.name;
+                document.getElementById('sura-name').textContent = data.data.name;
                 versesData = data.data.ayahs;
-
-                document.getElementById('sura-name').textContent = surahName;
 
                 totalPages = Math.ceil(versesData.length / versesPerPage);
                 displayPage(currentPage);
             } catch (error) {
-                console.error("خطأ:", error);
                 document.getElementById('verses-container').innerHTML = "<p>حدث خطأ أثناء تحميل السورة.</p>";
             }
         }
 
         function displayPage(page) {
             document.getElementById('page-number').textContent = `الصفحة: ${page}`;
-
             const startIndex = (page - 1) * versesPerPage;
-            const endIndex = startIndex + versesPerPage;
-            const versesToShow = versesData.slice(startIndex, endIndex);
-
             const versesContainer = document.getElementById('verses-container');
             versesContainer.innerHTML = '';
 
-            versesToShow.forEach(verse => {
-                const verseElement = document.createElement('div');
-                verseElement.classList.add('ayah');
-                verseElement.innerHTML = `${verse.text} <span class="ayah-number">﴿${verse.numberInSurah}﴾</span>`;
-                versesContainer.appendChild(verseElement);
+            versesData.slice(startIndex, startIndex + versesPerPage).forEach(verse => {
+                versesContainer.innerHTML += `<div class="ayah">${verse.text} <span class="ayah-number">﴿${verse.numberInSurah}﴾</span></div>`;
             });
 
             document.getElementById('prev-btn').disabled = page === 1;
@@ -252,17 +225,12 @@
         }
 
         function navigatePage(direction) {
-            if (direction === 'prev' && currentPage > 1) {
-                currentPage--;
-            } else if (direction === 'next' && currentPage < totalPages) {
-                currentPage++;
-            }
+            if (direction === 'prev' && currentPage > 1) currentPage--;
+            else if (direction === 'next' && currentPage < totalPages) currentPage++;
             displayPage(currentPage);
         }
 
-        function goHome() {
-            window.location.href = "index.html";
-        }
+        function goHome() { window.location.href = "index.html"; }
 
         document.addEventListener("DOMContentLoaded", fetchVerses);
     </script>
