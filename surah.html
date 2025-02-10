@@ -6,14 +6,15 @@
     <title>عرض السورة بالصفحات</title>
     
     <!-- استيراد الخطوط -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade&display=swap" rel="stylesheet">
+
     <style>
         body {
             color: white;
             direction: rtl;
             text-align: center;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: serif;
             background: #000000;
             margin: 0;
             padding: 0;
@@ -34,7 +35,6 @@
             justify-content: center;
             font-size: 22px;
             font-weight: bold;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             margin-bottom: 20px;
@@ -62,9 +62,6 @@
             100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
         }
 
-        /* تصميم مربع اسم السورة */
-       
-
         .bismillah {
             font-size: 28px;
             margin-bottom: 20px;
@@ -75,7 +72,7 @@
         .ayah {
             font-size: 22px;
             line-height: 2;
-            font-family: 'Scheherazade New', serif;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* تغيير الخط هنا */
             color: white;
             font-weight: bold;
             margin-bottom: 15px;
@@ -135,7 +132,6 @@
             color: #ff0000;
         }
 
-        /* تحسين عرض الصفحة للموبايل */
         @media screen and (max-width: 768px) {
             .quran-page {
                 padding: 15px;
