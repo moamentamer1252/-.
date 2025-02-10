@@ -16,18 +16,28 @@
             background: #000000;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* استخدام كامل ارتفاع الشاشة */
+            overflow: hidden;
         }
 
         /* صندوق السورة مع إضاءة ذهبية متحركة */
         .quran-page {
-            max-width: 600px;
-            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: 100%;
             padding: 20px;
             background: #1b263b;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* توهج ذهبي */
             border-radius: 10px;
             position: relative;
             animation: glow 10s infinite alternate;
+            overflow-y: auto;
         }
 
         /* تأثير الإضاءة الذهبية */
@@ -45,50 +55,51 @@
 
         /* تصميم مربع اسم السورة */
         .sura-container {
-            position: relative;
-            display: inline-block;
-            width: 210px;
+            width: 80%;
+            max-width: 300px;
             height: 80px;
-            transform: translateX(-200px) translateY(-10px);
             background: url('WhatsApp_Image_2025-02-10_at_1.22.08_PM-removebg-preview.png') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 22px;
             font-weight: bold;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
         }
 
         /* تحسين مظهر بسم الله */
         .bismillah {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
             color: white;
         }
 
         /* تنسيق الآيات */
         .ayah {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 2;
             font-family: 'Courier New', Courier, monospace;
             color: white;
             font-weight: bold;
+            margin-bottom: 10px;
+            word-wrap: break-word;
         }
 
         /* تصميم أرقام الآيات */
         .ayah-number {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #ffcc66cc;
         }
 
         /* رقم الصفحة */
         .page-number {
-            font-size: 18px;
-            margin-top: 30px;
+            font-size: 22px;
+            margin-top: 20px;
             font-weight: bold;
             color: white;
         }
@@ -101,7 +112,7 @@
         .pagination button {
             border-radius: 5px;
             font-size: 18px;
-            padding: 10px;
+            padding: 12px;
             margin: 5px;
             background: #333;
             color: white;
@@ -134,6 +145,42 @@
 
         .close-btn:hover {
             color: #ff0000;
+        }
+
+        /* Media Query للموبايل */
+        @media screen and (max-width: 768px) {
+            .quran-page {
+                padding: 10px;
+                height: 100%; /* لتغطية الشاشة بالكامل */
+                overflow-y: scroll; /* تمكين التمرير في حالة الحاجة */
+            }
+
+            .sura-container {
+                width: 70%;
+                height: 60px;
+                font-size: 18px;
+            }
+
+            .bismillah {
+                font-size: 22px;
+            }
+
+            .ayah {
+                font-size: 16px;
+            }
+
+            .ayah-number {
+                font-size: 14px;
+            }
+
+            .page-number {
+                font-size: 18px;
+            }
+
+            .pagination button {
+                font-size: 16px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
