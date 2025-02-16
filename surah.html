@@ -14,7 +14,7 @@
             color: white;
             direction: rtl;
             text-align: center;
-            font-family: serif;
+            font-family: 'Scheherazade', 'Amiri', serif; /* تطبيق الخط على جميع الصفحة */
             background: #1b263b;
             margin: 0;
             padding: 0;
@@ -24,6 +24,7 @@
             height: 100vh;
             overflow: hidden;
         }
+
         .sura-container {
             width: 80%;
             max-width: 300px;
@@ -52,7 +53,7 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             border-radius: 10px;
             position: relative;
-            animation: glow 10s infinite alternate;
+            animation: glow 5s infinite alternate;
             overflow-y: auto;
         }
 
@@ -72,7 +73,7 @@
         .ayah {
             font-size: 22px;
             line-height: 2;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* تغيير الخط هنا */
+            font-family: Verdana, Geneva, Tahoma, sans-serif; /* استخدام الخط العربي الجميل */
             color: white;
             font-weight: bold;
             margin-bottom: 15px;
@@ -93,13 +94,13 @@
         }
 
         .pagination {
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .pagination button {
             border-radius: 5px;
             font-size: 18px;
-            padding: 12px;
+            padding: 10px;
             margin: 5px;
             background: #333;
             color: white;
@@ -171,7 +172,6 @@
     <div class="quran-page">
         <button class="close-btn" onclick="goHome()">×</button>
         <div class="sura-container" id="sura-name">سورة البقرة</div>
-        <p class="bismillah">﷽</p>
         <div id="verses-container"></div>
         <div class="page-number" id="page-number">الصفحة: 1</div>
 
