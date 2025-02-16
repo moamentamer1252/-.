@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم الفني</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #e0e0e0;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #ffcc00;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #b0bec5;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 80%;
+        }
+        .images {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images a {
+            display: inline-block;
+        }
+        .images img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #333;
+            padding: 5px;
+            border-radius: 50px;
+        }
+        .images img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #ffcc00;
+        }
+
+        /* استجابة للموبايل */
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                padding: 10px;
+            }
+            p {
+                font-size: 16px;
+                max-width: 100%;
+            }
+            .images {
+                gap: 10px;
+            }
+            .images img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>الدعم الفني</h1>
+    <p>نحن في <strong>Mo Tc</strong> حرصنا على أن يكون تطبيق <strong>غذاء الروح</strong> خاليًا من الأخطاء التقنية، ولكن إذا واجهت أي مشكلة، يمكنك التواصل معنا.</p>
+    <p>نسعى دائمًا لتقديم أفضل تجربة ممكنة، ونتمنى أن يكون هذا التطبيق مفيدًا لك.</p>
+    <div class="images">
+        <a href="https://www.facebook.com/share/1DjJM37tPZ/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" alt="صفحة 1"></a>
+        <a href="https://www.instagram.com/motc.official?igsh=YTNlcDQyYm5wNGs1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" alt="صفحة 2"></a>
+        <a href="https://www.tiktok.com/@motc_official?_t=ZS-8tyExBFt9ov&_r=1"><img src="https://static.vecteezy.com/system/resources/previews/016/716/450/non_2x/tiktok-icon-free-png.png" alt="صفحة 3"></a>
+    </div>
+    <div class="footer">
+        <p>تم صنع <strong>غذاء الروح</strong> بواسطة <strong>Mo Tc</strong> - جميع الحقوق محفوظة &copy; 2025</p>
+    </div>
+</body>
+</html>
