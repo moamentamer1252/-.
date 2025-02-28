@@ -84,8 +84,13 @@
             margin-top: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(255, 204, 102, 0.5);
+            animation: glow 10s infinite alternate;
         }
-
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+        }
         p {
             font-size: 18px;
             line-height: 1.8;
@@ -95,6 +100,11 @@
             #map {
                 height: 300px;
             }
+            @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+        }
         }
     </style>
 </head>
@@ -118,6 +128,7 @@
             border: 2px solid rgba(255, 204, 102, 0.5);
             cursor: pointer;
             transition: all 0.3s ease-in-out;
+            animation: glow 15s infinite alternate;
         ">
             دُلَّني على المساجِدِ <img style="transform: translateY(2px); filter: invert(68%) sepia(76%) saturate(324%) hue-rotate(3deg) brightness(102%) contrast(101%);" width="20px" height="20px" src="https://cdn-icons-png.flaticon.com/512/2838/2838912.png" alt="">
         </button>
@@ -143,7 +154,7 @@
         // أيقونة المسجد
         const mosqueIcon = L.icon({
             iconUrl: 'https://cdn-icons-png.flaticon.com/512/89/89014.png',
-            iconSize: [40, 40],
+            iconSize: [35,35],
         });
     
         // دالة لتحديد موقع المستخدم وإظهار جميع المساجد
@@ -160,7 +171,7 @@
                         // إضافة علامة لموقع المستخدم
                         L.marker([userLat, userLng], { icon: userIcon })
                             .addTo(map)
-                            .bindPopup('📍 موقعك الحالي')
+                            .bindPopup('موقعك الحالي')
                             .openPopup();
     
                         // البحث عن جميع المساجد القريبة بدون تحديد مسافة
@@ -188,7 +199,7 @@
                                     let mosqueLng = place.lon || (place.center ? place.center.lon : null);
                                     
                                     if (mosqueLat && mosqueLng) {
-                                        const mosqueName = place.tags && place.tags.name ? place.tags.name : '🕌 مسجد';
+                                        const mosqueName = place.tags && place.tags.name ? place.tags.name : ' اسم المسجد غير معروف !';
     
                                         // إضافة علامة لكل مسجد
                                         L.marker([mosqueLat, mosqueLng], { icon: mosqueIcon })
