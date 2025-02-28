@@ -1,132 +1,241 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>iFruit Phone</title>  
-    <style>  
-        body {  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            height: 100vh;  
-            background: #222;  
-            margin: 0;  
-            font-family: Arial, sans-serif;  
-        }  
-        .phone {  
-            width: 275px;   
-            height: 580px;   
-            background: black;  
-            border-radius: 50px;  
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            position: relative;  
-            overflow: hidden;  
-            padding: 0 15px;  
-        }  
-        .top-frame {  
-            width: 100%;  
-            height: 60px;  
-            background: black;  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            position: absolute;  
-            top: 0;  
-            z-index: 10;  
-        }  
-        .top-frame span {  
-            color: white;  
-            font-size: 16px;  
-            font-weight: bold;  
-        }  
-        .top-frame img {  
-            width: 30px;  
-            height: 30px;  
-            margin-right: 5px;  
-        }  
-        .screen {  
-            width: 100%;  
-            height: 100%;  
-            background: linear-gradient(to bottom, #9966cc, #000);  
-            border-radius: 50px;  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            padding-top: 70px;  
-            position: relative;  
-        }  
-        .title {  
-            color: white;  
-            font-size: 20px;  
-            background:rgb(61, 61, 61);  
-            width: 100%;  
-            text-align: center;  
-            padding: 10px 0;
-            border-radius: 3px;  
-        }  
-        .icons {  
-            display: grid;  
-            grid-template-columns: repeat(3, 1fr);  
-            gap: 20px;  
-            margin-top: 40px;  
-        }  
-        .icon img {  
-            width: 65px;  
-            height: 65px;  
-            border-radius: 20px;  
-        }  
-        .bottom-bar {  
-            position: absolute;  
-            bottom: 30px;  
-            display: flex;  
-            justify-content: space-between;  
-            width: 80%;  
-        }  
-        .bottom-bar img {  
-            width: 25px;  
-            height: 25px;  
-        }  
-        .status-bar {  
-            position: absolute;  
-            top: 65px;  
-            width: 90%;  
-            display: flex;  
-            justify-content: space-between;  
-            color: white;  
-            font-size: 14px;  
-        }  
-    </style>  
-</head>  
-<body>  
-    <div class="phone">  
-        <div class="top-frame">  
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwqHULyc1LV56QLGXCPvqk1zkR2lNpH0KjWEMzoGvoX7uizkUcfy8VhP8edYErnPYEY5Y&usqp=CAU" alt="logo">  
-            <span>iFruit</span>  
-        </div>  
-        <div class="screen">  
-            <div class="status-bar">  
-                <span>Fri 18:57</span>  
-                <span>🔋 📶</span>  
-            </div>  
-            <h2 class="title">Job List</h2>  
-            <div class="icons">  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.16 PM (1).jpeg" alt="App 1"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.16 PM (2).jpeg" alt="App 2"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.16 PM (3).jpeg" alt="App 3"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.16 PM.jpeg" alt="App 4"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.17 PM (1).jpeg" alt="App 5"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.53.17 PM.jpeg" alt="App 6"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.54.01 PM.jpeg" alt="App 7"></div>  
-                <div class="icon"><img src="WhatsApp Image 2025-02-22 at 8.54.02 PM.jpeg" alt="App 8"></div>  
-            </div>  
-            <div class="bottom-bar">  
-                <img style="transform: translateX(100px);" src="https://www.freeiconspng.com/uploads/green-plus-sign-icon-9.png" alt="Center Icon">  
-                <img src="https://cdn-icons-png.flaticon.com/512/190/190238.png" alt="Right Icon">  
-            </div>  
-        </div>  
-    </div>  
-</body>  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القرآن الكريم</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+        body {
+            font-family: 'Reem Kufi', sans-serif;
+            background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+            color: #f8f9fa;
+            direction: rtl;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: rgba(13, 27, 42, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-item {
+            color: #ffcc66;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            border-radius: 15px;
+            background: rgba(255, 204, 102, 0.2);
+            border-color: #ffcc66;
+            box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto 0px;
+            background: rgba(27, 38, 59, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ffcc66;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
+        }
+
+        .decorative-line {
+            transform: translateY(-15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .decorative-line .line {
+            height: 1px;
+            background: #ffcc66;
+            border-radius: 3px;
+        }
+
+        .decorative-line .short {
+            width: 30px;
+        }
+
+        .decorative-line .long {
+            width: 80px;
+        }
+
+        .decorative-line .medium {
+            width: 50px;
+        }
+
+        .suras {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            justify-items: center;
+            padding: 25px;
+        }
+
+        .sura {
+            background: linear-gradient(145deg, #2c3e50, #1b263b);
+            color: #ffcc66;
+            padding: 18px 20px;
+            border-radius: 15px 0px 15px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            max-width: 180px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4),
+                -5px -5px 15px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            border: 2px solid rgba(255, 204, 102, 0.4);
+        }
+
+        .sura::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 2px solid rgba(255, 204, 102, 0.3);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .sura:hover {
+            background: rgba(44, 62, 80, 0.9);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 204, 102, 0.4);
+        }
+
+        .verses-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(27, 38, 59, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+
+        .verse {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 10px;
+            }
+
+            .nav-item {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .suras {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .sura {
+                font-size: 18px;
+                padding: 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">السور</a>
+            <a href="index 2.html" class="nav-item">الأدوات</a>
+            <a href="Time.html" class="nav-item">أوقات الصلاة</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1> القرآن الكريم</h1>
+        <div class="decorative-line">
+            <span class="line short"></span>
+            <span class="line long"></span>
+            <span class="line medium"></span>
+        </div>
+        <div class="suras" id="suras-container">
+            <!-- سيتم إضافة أسماء السور هنا عبر JavaScript -->
+        </div>
+        <div id="verses-container" class="verses-container">
+            <!-- سيتم عرض الآيات هنا -->
+        </div>
+    </div>
+    <script>
+                alert("هل صليت علي النبي اليوم ؟");
+        async function fetchSurahNames() {
+            try {
+                const response = await fetch("https://api.alquran.cloud/v1/surah");
+                if (!response.ok) throw new Error("فشل تحميل البيانات");
+                const data = await response.json();
+                const surahs = data.data;
+
+                const surasContainer = document.getElementById('suras-container');
+                surasContainer.innerHTML = ''; // تفريغ العنصر قبل إضافة السور
+
+                surahs.forEach((surah, index) => {
+                    const surahElement = document.createElement('div');
+                    surahElement.classList.add('sura'); // إضافة التنسيق المحدد مسبقاً
+
+                    const surahName = document.createElement('span');
+                    surahName.textContent = `${index + 1} - ${surah.name}`; // إضافة رقم السورة بجانب الاسم
+
+                    surahElement.appendChild(surahName);
+                    surahElement.onclick = () => {
+                        // الانتقال إلى صفحة الآيات الخاصة بالسورة
+                        window.location.href = `surah.html?number=${surah.number}`;
+                    };
+
+                    surasContainer.appendChild(surahElement);
+                });
+            } catch (error) {
+                console.error("خطأ:", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchSurahNames);
+    </script>
+</body>
 </html>
