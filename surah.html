@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>القران الكريم</title>
+    <title>القرآن الكريم</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade&display=swap" rel="stylesheet">
     <style>
         body {
             color: white;
             direction: rtl;
             text-align: center;
-            font-family: serif;
             background: #1b263b;
             margin: 0;
             padding: 0;
@@ -20,84 +18,85 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            font-family: 'Amiri', serif;
         }
         .sura-container {
-            width: 80%;
+            width: 90%;
             max-width: 300px;
-            height: 80px;
-            background: url('WhatsApp_Image_2025-02-10_at_1.22.08_PM-removebg-preview.png') no-repeat center center;
+            height: 150px;
+            background: url('https://static.vecteezy.com/system/resources/previews/028/296/888/non_2x/luxury-golden-arabic-islamic-banner-title-frame-text-box-in-transparent-background-free-png.png') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 28px;
             font-weight: bold;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            margin-bottom: 20px;
+            text-shadow: 2px rgba(255, 255, 255, 0.849);
+            position: relative;
+            margin-bottom: 15px;
         }
         .quran-page {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            width: 90%;
+            width: 85%;
             height: 95%;
             padding: 20px;
             background: #1b263b;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             border-radius: 10px;
             position: relative;
-            animation: glow 10s infinite alternate;
+            animation: glow 8s infinite alternate;
             overflow-y: auto;
         }
         @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            0% { box-shadow: 0 0 10px rgba(255, 217, 0, 0.726); }
             50% { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
-            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(255, 217, 0, 0.726); }
         }
         .ayah-container {
-    font-size: 22px;
-    word-spacing: 3px;
-    letter-spacing: 1px; 
-    line-height: 2.0; 
-    font-family: 'Amiri', serif;
-    color: beige;
-    font-weight: bold;
-    padding: 0 15px;
-    margin-bottom: 40px; 
-    padding-bottom: 50px;
-}
-
-
-        .ayah-number {
-            font-family: 'Tajawal', sans-serif;
-            position: relative;
+            font-size: 28px;
+            color: snow;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            line-height: 2.0;
+        }
+        .ayah-container span {
             display: inline-block;
-            width: 30px; 
+            margin-bottom: 15px;
+        }
+        .ayah-number {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
             height: 35px;
             vertical-align: middle;
+            margin: 0 5px;
         }
         .ayah-icon {
-            width: 100%;
-            height: 100%;
+            width: 97%;
+            height: 97%;
+            display: block;
         }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-
         .ayah-text {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 14px;
+            font-size: 10px;
             font-weight: bold;
-            color: black;
+            color: #000000;
+            text-align: center;
+            pointer-events: none;
         }
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: -6px;
+            right: -1px;
             font-size: 40px;
             color: #ff6347;
             background: transparent;
@@ -108,28 +107,76 @@
             color: #ff0000;
         }
         @media screen and (max-width: 768px) {
-            .quran-page {
-                padding: 15px;
-                height: 90%;
-                overflow-y: scroll;
-            }
             .sura-container {
-                font-size: 20px;
-                height: 70px;
+                max-width: 300px;
+                height: 100px;
+                font-size: 23px;
+                position: relative;
             }
             .ayah-container {
-                font-size: 18px;
+                font-size: 20px;
+                line-height: 2.6;
             }
-            .ayah-number {
-                font-size: 16px;
+            .sura-container {
+                max-width: 300px;
+                max-height: 100px;
+                font-size: 18px;
+                position: relative;
             }
         }
+        .first-words {
+            font-size: 17px;
+            color:#0c972f; 
+            transform: translateY(-3px);
+            font-family: 'Amiri', serif;
+            margin-bottom: 5px;
+        }
+        .dark-mode-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: black;
+            font-size: 14px;
+            padding: 3px;
+            border: none;
+            background-color:rgb(255, 255, 255);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.8);
+        }
+       .light-mode {
+    background: white;
+}
+.light-mode .quran-page {
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.light-mode .ayah-container {
+    color: #000;
+}
+.light-mode .first-words {
+    color: #0c972f;
+}
+.light-mode .sura-container {
+    color: #ffffff;
+}
+.light-mode .dark-mode-btn{
+    background-color: #1b263b;
+}
     </style>
 </head>
 <body>
     <div class="quran-page">
         <button class="close-btn" onclick="goHome()">×</button>
-        <div class="sura-container" id="sura-name">سورة البقرة</div>
+        <button class="dark-mode-btn" onclick="toggleMode()">🌤️</button>
+        <div class="sura-container" id="sura-name">جارٍ التحميل...</div>
+        <div class="first-words" id="first-words"></div>
         <div id="verses-container" class="ayah-container"></div>
     </div>
     <script>
@@ -137,28 +184,62 @@
             const urlParams = new URLSearchParams(window.location.search);
             const surahNumber = urlParams.get('number') || 2;
             try {
-                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}`);
+                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`);
                 if (!response.ok) throw new Error("فشل تحميل بيانات السورة");
                 const data = await response.json();
                 document.getElementById('sura-name').textContent = data.data.name;
+                const firstVerseText = data.data.ayahs[0].text;
+                let firstWords = "";
+                if (surahNumber !== "9" && surahNumber !== "1") {
+                    firstWords = getFirstWords(firstVerseText);
+                    const firstWordsElement = document.getElementById('first-words');
+                    if (firstWordsElement) {
+                        firstWordsElement.textContent = firstWords;
+                    }
+                    data.data.ayahs[0].text = removeFirstWords(firstVerseText);
+                }
                 displayVerses(data.data.ayahs);
             } catch (error) {
                 document.getElementById('verses-container').innerHTML = "<p>حدث خطأ أثناء تحميل السورة.</p>";
+                console.error("خطأ في تحميل السورة:", error);
             }
         }
-
+        function getFirstWords(text) {
+            return text.split(" ").slice(0, 4).join(" ");
+        }
+        function removeFirstWords(text) {
+            return text.split(" ").slice(4).join(" ");
+        }
         function displayVerses(verses) {
-            document.getElementById('verses-container').innerHTML = verses
-                .map(verse => `${verse.text} 
-                    <span class="ayah-number">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Ayah2.svg/1574px-Ayah2.svg.png" class="ayah-icon">
-                        <span class="ayah-text">${verse.numberInSurah.toLocaleString('ar-EG')}</span>
-                    </span>`)
+            const versesContainer = document.getElementById('verses-container');
+            versesContainer.innerHTML = verses
+                .map(verse => {
+                    return `${verse.text} 
+                        <span class="ayah-number">
+                            <img src="WhatsApp_Image_2025-03-21_at_8.06.46_PM-removebg-preview.png" class="ayah-icon">
+                            <span class="ayah-text">${verse.numberInSurah.toLocaleString('ar-EG')}</span>
+                        </span>`;
+                })
                 .join(' ');
         }
-
-        function goHome() { window.location.href = "index.html"; }
         document.addEventListener("DOMContentLoaded", fetchVerses);
+        function goHome() {
+            window.location.href = "index.html";
+        }
+
+        function toggleMode() {
+    const body = document.body;
+    if (body.classList.contains("dark-mode")) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+    } else if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+    } else {
+        body.classList.add("light-mode");
+    }
+}
+
     </script>
 </body>
 </html>

@@ -1,101 +1,174 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدعم الفني</title>
+    <title>الدعم الفني - غذاء الروح</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        :root {
+            --primary-color: #f8b81f;
+            --dark-bg: #0f172a;
+            --light-text: #f8fafc;
+        }
         
         body {
-            font-family: 'Cairo', sans-serif;
-            text-align: center;
-            background-color: #121212;
-            color: #e0e0e0;
-            direction: rtl;
-            margin: 0;
-            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            color: #ffcc00;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        p {
-            color: #b0bec5;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 80%;
-        }
-        .images {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
             justify-content: center;
+            padding: 1rem;
+            line-height: 1.6;
+            text-align: center;
         }
-        .images a {
-            display: inline-block;
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
-        .images img {
+        
+        .logo {
+            border-radius: 30%;
             width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background-color: #333;
-            padding: 5px;
-            border-radius: 50px;
+            height: auto;
+            margin-bottom: 1rem;
         }
-        .images img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
         }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light-text);
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(248, 184, 31, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .social-name {
+            font-size: 0.8rem;
+        }
+        
         .footer {
-            margin-top: 30px;
-            font-size: 16px;
-            color: #ffcc00;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
         }
-
-        /* استجابة للموبايل */
-        @media (max-width: 768px) {
-            body {
-                height: auto;
-                padding: 10px;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
             }
-            p {
-                font-size: 16px;
-                max-width: 100%;
+            
+            h1 {
+                font-size: 1.5rem;
             }
-            .images {
-                gap: 10px;
-            }
-            .images img {
-                width: 30px;
-                height: 30px;
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <h1>الدعم الفني</h1>
-    <p>نحن في <strong>Mo Tc</strong> حرصنا على أن يكون تطبيق <strong>غذاء الروح</strong> خاليًا من الأخطاء التقنية، ولكن إذا واجهت أي مشكلة، يمكنك التواصل معنا.</p>
-    <p>نسعى دائمًا لتقديم أفضل تجربة ممكنة، ونتمنى أن يكون هذا التطبيق مفيدًا لك.</p>
-    <div class="images">
-        <a href="https://www.facebook.com/share/1DjJM37tPZ/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" alt="صفحة 1"></a>
-        <a href="https://www.instagram.com/motc.official?igsh=YTNlcDQyYm5wNGs1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" alt="صفحة 2"></a>
-        <a href="https://www.tiktok.com/@motc_official?_t=ZS-8tyExBFt9ov&_r=1"><img src="https://static.vecteezy.com/system/resources/previews/016/716/450/non_2x/tiktok-icon-free-png.png" alt="صفحة 3"></a>
+    <div class="container">
+        <img src="WhatsApp Image 2025-05-14 at 6.33.47 PM.jpeg" alt="شعار غذاء الروح" class="logo">
+        
+        <h1>الدعم الفني لتطبيق غذاء الروح</h1>
+        
+        <p>للتواصل مع فريق الدعم الفني الخاص بتطبيق <span class="highlight">غذاء الروح</span>، يرجى استخدام أحد الوسائل التالية:</p>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1DjJM37tPZ/" class="social-link" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <span class="social-name">فيسبوك</span>
+            </a>
+            
+            <a href="https://www.instagram.com/motc.official?igsh=YTNlcDQyYm5wNGs1" class="social-link" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <span class="social-name">إنستجرام</span>
+            </a>
+            
+            <a href="https://www.tiktok.com/@motc_official?_t=ZS-8tyExBFt9ov&_r=1" class="social-link" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <span class="social-name">تيك توك</span>
+            </a>
+            
+            <a href="mailto:support@moament415@gmil.com" class="social-link" target="_blank">
+                <div class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="social-name">البريد الإلكتروني</span>
+            </a>
+        </div>
     </div>
+    
     <div class="footer">
-        <p>تم صنع <strong>غذاء الروح</strong> بواسطة <strong>Mo Tc</strong> - جميع الحقوق محفوظة &copy; 2025</p>
+        <p>جميع الحقوق محفوظة &copy; <span id="year">2025</span> Mo Tc</p>
     </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

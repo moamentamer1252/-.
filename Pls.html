@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>القضية الفلسطينية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>الأيآت القرآنية ثلاثية الأبعاد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&family=Tajawal:wght@300;400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(to bottom, #0d1b2a, #1b263b);
-            color: #f8f9fa;
-            direction: rtl;
-            text-align: center;
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
-
-        .navbar {
+        
+        body {
+            
+            font-family: 'Amiri', serif;
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            color: #ffcc66;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 15px;
+            touch-action: manipulation;
+        }
+          .navbar {
+             font-family: 'Reem Kufi', sans-serif;
             background: rgba(13, 27, 42, 0.95);
             padding: 15px 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -37,7 +49,6 @@
         }
 
         .nav-item {
-            font-family: 'Reem Kufi', sans-serif;
             color: #ffcc66;
             font-size: 18px;
             font-weight: bold;
@@ -58,93 +69,319 @@
             box-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 80px auto 0px;
-            background: rgba(27, 38, 59, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        .header {
+            text-align: center;
+                margin-top: 95px; 
+            width: 100%;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(255, 204, 102, 0.7);
+            margin-bottom: 5px;
+            word-wrap: break-word;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            color: #a3b1c6;
+        }
+        
+        .ayah-container {
+            margin-top: 100px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            perspective: 1000px;
+        }
+        
+        .ayah-card {
             position: relative;
-            overflow: hidden;
+            width: 100%;
+            height: 120px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            animation: rotateAyah 25s infinite linear;
+            animation-delay: calc(var(--delay) * 1s);
+            max-width: 350px;
         }
-
-        h1 {
-            font-family: 'Reem Kufi', sans-serif;
-            color: #ffcc66;
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
+        
+        @keyframes rotateAyah {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            25% { transform: rotateY(90deg) rotateX(5deg); }
+            50% { transform: rotateY(180deg) rotateX(0deg); }
+            75% { transform: rotateY(270deg) rotateX(-5deg); }
+            100% { transform: rotateY(360deg) rotateX(0deg); }
         }
-
-        p {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        .image-placeholder {
-            width: 80%;
-            height: 300px;
-            background: rgba(255, 204, 102, 0.2);
-            border: 2px dashed #ffcc66;
-            margin: 30px auto;
+        
+        .ayah-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #ffcc66;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #2c3e50, #1b263b);
+            border: 1.5px solid #ffcc66;
+            word-break: keep-all;
+            overflow: hidden;
+        }
+        
+        .ayah-face.front {
+            transform: translateZ(60px);
+        }
+        
+        .ayah-face.back {
+            transform: rotateY(180deg) translateZ(60px);
+            background: linear-gradient(145deg, #3e2723, #1b263b);
+            font-size: 1rem;
+        }
+        
+        .ayah-info {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a3b1c6;
+            width: 100%;
+            padding: 0 10px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #a3b1c6;
+            width: 100%;
+            padding: 0 10px;
+        }
+        
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .ayah-card {
+                height: 100px;
+            }
+            
+            .ayah-face {
+                font-size: 1rem;
+                padding: 10px;
+            }
+            
+            .ayah-face.back {
+                font-size: 0.9rem;
+            }
+            
+            @keyframes rotateAyah {
+                0% { transform: rotateY(0deg) rotateX(0deg) scale(0.95); }
+                25% { transform: rotateY(90deg) rotateX(5deg) scale(0.95); }
+                50% { transform: rotateY(180deg) rotateX(0deg) scale(0.95); }
+                75% { transform: rotateY(270deg) rotateX(-5deg) scale(0.95); }
+                100% { transform: rotateY(360deg) rotateX(0deg) scale(0.95); }
+            }
+        }
+        
+        /* منع الزوم على الهاتف */
+        @media (hover: none) and (pointer: coarse) {
+            body {
+                touch-action: pan-y;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-item">السور</a>
             <a href="index 2.html" class="nav-item">الأدوات</a>
             <a href="Time.html" class="nav-item">أوقات الصلاة</a>
         </div>
     </nav>
-    <div class="container">
-        <h1>القضية الفلسطينية</h1>
-        <img width="200px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/640px-Flag_of_Palestine.svg.png" alt="">
-        <p>القضية الفلسطينية هي واحدة من أهم القضايا العربية والإسلامية. بدأت مع الاحتلال الصهيوني للأراضي الفلسطينية عام 1948، حيث تم تهجير مئات الآلاف من الفلسطينيين قسرًا، واستمرت الممارسات العدوانية حتى يومنا هذا.</p>
+    <div class="header">
+        <h1>الأيآت القرآنية ثلاثية الأبعاد</h1>
+    </div>
+    <p>!اضغط على الآية لإيقاف/الدوران</p>
+    <div class="ayah-container">
+    <!-- آية 1 -->
+    <div class="ayah-card" style="--delay: 0">
+        <div class="ayah-face front">
+            ﴿فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا﴾ [الشرح: 6]
+        </div>
+        <div class="ayah-face back">
+           تفسير: بعد كل ضيق وصعوبة يأتي الفرج واليسر بإذن الله.
+        </div>
     </div>
 
-    <div class="container">
-        <h1>الاحتلال الصهيوني</h1>
-        <p>بدأ الاحتلال الصهيوني عام 1948 بإعلان قيام الكيان الصهيوني على أرض فلسطين، وتم تهجير أكثر من 750,000 فلسطيني من منازلهم قسرًا في ما يُعرف بالنكبة.</p>
-        <p>استمر الاحتلال بتوسيع مستوطناته وفرض سيطرته بالقوة، وانتهج سياسات القمع والتهجير والاستيطان المستمر.</p>
+    <!-- آية 2 -->
+    <div class="ayah-card" style="--delay: 1">
+        <div class="ayah-face front">
+            ﴿إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا﴾ [الشرح: 7]
+        </div>
+        <div class="ayah-face back">
+           تفسير: التأكيد على أن اليسر والفرج دائمًا ما يتبعان الشدة والضيق.
+        </div>
     </div>
 
-    <div class="container">
-        <h1>الهدنة الحالية</h1>
-        <p>تشهد فلسطين العديد من الهدنات التي غالبًا ما يتم خرقها من قبل الاحتلال، حيث لا تلبث أن تبدأ حتى يتم انتهاكها عبر القصف والاستفزازات المستمرة.</p>
-        <p>الهدنة الحالية ليست سوى محطة مؤقتة في ظل غياب حل جذري للقضية.</p>
+    <!-- آية 3 -->
+    <div class="ayah-card" style="--delay: 2">
+        <div class="ayah-face front">
+            ﴿وَٱلَّذِينَ جَٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا﴾ [العنكبوت: 69]
+        </div>
+        <div class="ayah-face back">
+           تفسير: من يجتهد في طريق الله يهديه إلى أفضل الطرق والنجاح.
+        </div>
     </div>
 
-    <div class="container">
-        <h1>أهمية المقاطعة</h1>
-        <p>المقاطعة الاقتصادية للاحتلال وشركاته الداعمة تُعد من أقوى الأسلحة التي يمكن استخدامها ضد المحتل.</p>
-        <p>من خلال الامتناع عن شراء منتجات الشركات الداعمة للاحتلال، يتم إضعاف اقتصاده وإرسال رسالة واضحة بأن الشعوب ترفض دعمه.</p>
-        <p>المقاطعة تساعد في دعم المنتجات المحلية وتعزيز الاقتصاد الوطني للدول العربية والإسلامية.</p>
+    <!-- آية 4 -->
+    <div class="ayah-card" style="--delay: 3">
+        <div class="ayah-face front">
+            ﴿وَقَالَ رَبُّكُمُ ٱدْعُونِىٓ أَسْتَجِبْ لَكُمْ﴾ [غافر: 60]
+        </div>
+        <div class="ayah-face back">
+           تفسير: ربك أمر بالدعاء ووعد بأنه سيستجيب لمن يدعوه بصدق وإخلاص.
+        </div>
     </div>
 
-    <div class="container">
-        <h1>فوائد المقاطعة</h1>
-        <p>1. التأثير على الاقتصاد الإسرائيلي وتقليل مصادر تمويل الاحتلال.</p>
-        <p>2. دعم الشركات البديلة المحلية والإسلامية.</p>
-        <p>3. رفع الوعي العالمي بالقضية الفلسطينية.</p>
-        <p>4. إجبار الشركات العالمية على إعادة النظر في دعم الاحتلال.</p>
+    <!-- آية 5 -->
+    <div class="ayah-card" style="--delay: 4">
+        <div class="ayah-face front">
+            ﴿إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ﴾ [الحجرات: 10]
+        </div>
+        <div class="ayah-face back">
+           تفسير: المؤمنون جميعًا إخوة يتعاونون على الخير والمحبة.
+        </div>
     </div>
 
-    <div class="container">
-        <h1>صورة معبرة عن القضية</h1>
-        <div class="image-placeholder"><img height="300px" width="800px" src="WhatsApp Image 2025-02-10 at 3.18.45 PM.jpeg" alt=""></div>
+    <!-- آية 6 -->
+    <div class="ayah-card" style="--delay: 5">
+        <div class="ayah-face front">
+            ﴿لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ﴾ [الزمر: 53]
+        </div>
+        <div class="ayah-face back">
+           تفسير: لا تيأسوا من رحمة الله مهما كثرت ذنوبكم.
+        </div>
     </div>
-    <div class="container">
-        <h1>المنتاجات المقاطعة !</h1>
-        <div class="image-placeholder"><img height="300px" width="800px" src="https://daqaeq.net/wp-content/uploads/2023/11/%D9%85%D8%A7-%D9%87%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D9%8A-%D9%8A%D8%AC%D8%A8-%D9%85%D9%82%D8%A7%D8%B7%D8%B9%D8%AA%D9%87%D8%A7.jpg" alt=""></div>
+
+    <!-- آية 7 -->
+    <div class="ayah-card" style="--delay: 6">
+        <div class="ayah-face front">
+            ﴿وَٱلَّذِينَ آمَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ﴾ [الرعد: 28]
+        </div>
+        <div class="ayah-face back">
+           تفسير: المؤمنون يجدون الراحة والسكينة في ذكر الله.
+        </div>
     </div>
+
+    <!-- آية 8 -->
+    <div class="ayah-card" style="--delay: 7">
+        <div class="ayah-face front">
+            ﴿ٱلَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ﴾ [المؤمنون: 2]
+        </div>
+        <div class="ayah-face back">
+           تفسير: الذين يخشعون في صلاتهم يقتربون من الله بقلب خاشع.
+        </div>
+    </div>
+
+    <!-- آية 9 -->
+    <div class="ayah-card" style="--delay: 8">
+        <div class="ayah-face front">
+            ﴿وَٱصْبِرْ وَمَا صَبْرُكَ إِلَّا بِٱللَّهِ﴾ [النحل: 127]
+        </div>
+        <div class="ayah-face back">
+           تفسير: الصبر الحقيقي يكون بمعونة الله وقوته.
+        </div>
+    </div>
+
+    <!-- آية 10 -->
+    <div class="ayah-card" style="--delay: 9">
+        <div class="ayah-face front">
+            ﴿وَمَن يَتَّقِ ٱللَّهَ يَجْعَل لَّهُۥ مَخْرَجًۭا﴾ [الطلاق: 2]
+        </div>
+        <div class="ayah-face back">
+           تفسير: من يتقي الله، يفتح له الله أبواب الفرج والخروج من الضيق.
+        </div>
+    </div>
+
+    <!-- آية 11 -->
+    <div class="ayah-card" style="--delay: 10">
+        <div class="ayah-face front">
+            ﴿إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ﴾ [البقرة: 153]
+        </div>
+        <div class="ayah-face back">
+           تفسير: الله مع الصابرين الذين يحتسبون عند المحن.
+        </div>
+    </div>
+
+    <!-- آية 12 -->
+    <div class="ayah-card" style="--delay: 11">
+        <div class="ayah-face front">
+            ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114]
+        </div>
+        <div class="ayah-face back">
+           تفسير: دعاء لطلب المزيد من العلم والهدى من الله.
+        </div>
+    </div>
+
+    <!-- آية 13 -->
+    <div class="ayah-card" style="--delay: 12">
+        <div class="ayah-face front">
+            ﴿إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا﴾ [الشرح: 6]
+        </div>
+        <div class="ayah-face back">
+           تفسير: الله يذكرنا أن بعد كل ضيق يأتي الفرج واليسر.
+        </div>
+    </div>
+
+    <!-- آية 14 -->
+    <div class="ayah-card" style="--delay: 13">
+        <div class="ayah-face front">
+            ﴿وَمَن يَتَّقِ ٱللَّهَ يَجْعَل لَّهُۥ وَمَخْرَجًا﴾ [الطلاق: 2]
+        </div>
+        <div class="ayah-face back">
+           تفسير: من يتقي الله يجد له مخرجًا من كل ضيق.
+        </div>
+    </div>
+</div>
+
+</div>
+
+    </div>
+    
+    <div class="ayah-info">
+        >صَلِّ عَلَى النَّبِيِّ، وَمَا تِنْسَاش تِذْكُرْ غَيْرَك.ﷺ
+    </div>
+    
+    <div class="footer">
+        "وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا" - طه: 124
+    </div>
+
+    <script>
+        // إضافة تفاعل بسيط للهاتف
+        document.querySelectorAll('.ayah-card').forEach(card => {
+            let isPaused = false;
+            
+            card.addEventListener('click', () => {
+                isPaused = !isPaused;
+                if(isPaused) {
+                    card.style.animationPlayState = 'paused';
+                } else {
+                    card.style.animationPlayState = 'running';
+                }
+            });
+            
+            // تحسين الأداء على الهاتف
+            card.style.willChange = 'transform';
+        });
+    </script>
 </body>
 </html>
